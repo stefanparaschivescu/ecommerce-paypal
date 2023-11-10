@@ -1,0 +1,62 @@
+schema {
+    query: Query
+}
+
+type Query {
+    products: [Product]
+    productsIds(ids: [ID]): [Product]
+    product(id: ID): Product
+    orders: [Order]
+    ordersByEmail(email: String): [Order]
+    users: [User]
+    user(id: ID): User
+}
+
+type Product {
+    id: Int
+    productName: String
+    seller: String
+    year: Int
+    country: String
+    description: String
+    filename: String
+    price: Int
+    type: String
+    productRating: Float
+}
+
+type Order {
+    id: Int
+    totalPrice: Float
+    date: String
+    firstName: String
+    lastName: String
+    city: String
+    address: String
+    email: String
+    phoneNumber: String
+    postIndex: Int
+    orderItems: [OrderItem]
+}
+
+type OrderItem {
+    id: Int
+    amount: Int
+    quantity: Int
+    product: Product
+}
+
+type User {
+    id: Int
+    email: String
+    password: String
+    firstName: String
+    lastName: String
+    city: String
+    address: String
+    phoneNumber: String
+    postIndex: String
+    active: Boolean
+    provider: String
+    roles: [String]
+}
